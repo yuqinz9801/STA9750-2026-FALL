@@ -1,0 +1,75 @@
+---
+title: "Houston Housing Market"
+author: "Yuqin Zheng"
+format:
+  revealjs:
+    incremental: true
+---
+
+## Annual Housing Sales
+
+```{r}
+#| echo: false
+
+library(tidyverse)
+
+txhousing |>
+  filter(city=="Houston") |>
+  group_by(year) |>
+  summarize(sales=sum(sales)) |>
+  ggplot(aes(x=year, y=sales)) +
+    geom_line() +
+    ggtitle("Annual Houses Sold in Houston, TX")
+```
+
+The number of houses sold in Houston changes over time.
+
+## Average Housing Price by Month
+
+```{r}
+#| echo: false
+
+txhousing |>
+  filter(city=="Houston") |>
+  group_by(month) |>
+  summarize(avg_price=sum(volume) / sum(sales)) |>
+  mutate(month=factor(month.abb[month],
+               levels=month.abb, ordered=TRUE)) |>
+  ggplot(aes(x=month, y=avg_price)) +
+  geom_bar(stat="identity") +
+  ggtitle("Average Price of Houses Sold in Texas by Month") +
+  xlab("Month") +
+  ylab("Average Sale Price") +
+  scale_y_continuous(labels = scales::dollar)
+```
+
+Average housing prices in Houston vary across different months of the year.
+
+## Average Housing Price by City in 2015
+
+```{r}
+#| echo: false
+
+txhousing |>
+  filter(year==2015) |>
+  group_by(city) |>
+  summarize(
+    avg_price=sum(volume) / sum(sales),
+    num_sales=sum(sales)
+  ) |>
+  slice_max(num_sales, n=10) |>
+  ggplot(aes(x=city, y=avg_price)) +
+  geom_bar(stat="identity") +
+  ggtitle("Average Price of Houses Sold in 2015 by City in Texas") +
+  xlab("City") +
+  ylab("Average Sale Price") +
+  scale_y_continuous(labels = scales::dollar)
+```
+
+Average housing prices differ across the ten Texas cities with the highest number of sales in 2015.
+
+## Conclusion
+
+- Annual housing sales change over time.
+- Average housing prices vary by month.
+- Housing prices differ across major Texas cities.
