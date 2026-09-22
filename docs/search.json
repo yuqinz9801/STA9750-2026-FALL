@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to My Website",
+    "section": "",
+    "text": "Hello! My name is Yuqin Zheng, and I am a student at Baruch College. This website hosts my course projects and assignments for STA 9750.\n\n\n\n\n\n\n\nLast Updated: Monday 09 21, 2026 at 20:09PM"
+  },
+  {
+    "objectID": "Lab2.html#annual-housing-sales",
+    "href": "Lab2.html#annual-housing-sales",
+    "title": "Houston Housing Market",
+    "section": "Annual Housing Sales",
+    "text": "Annual Housing Sales\n\nThe number of houses sold in Houston changes over time."
+  },
+  {
+    "objectID": "Lab2.html#average-housing-price-by-month",
+    "href": "Lab2.html#average-housing-price-by-month",
+    "title": "Houston Housing Market",
+    "section": "Average Housing Price by Month",
+    "text": "Average Housing Price by Month\n\nAverage housing prices in Houston vary across different months of the year."
+  },
+  {
+    "objectID": "Lab2.html#average-housing-price-by-city-in-2015",
+    "href": "Lab2.html#average-housing-price-by-city-in-2015",
+    "title": "Houston Housing Market",
+    "section": "Average Housing Price by City in 2015",
+    "text": "Average Housing Price by City in 2015\n\nAverage housing prices differ across the ten Texas cities with the highest number of sales in 2015."
+  },
+  {
+    "objectID": "Lab2.html#conclusion",
+    "href": "Lab2.html#conclusion",
+    "title": "Houston Housing Market",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nAnnual housing sales change over time.\nAverage housing prices vary by month.\nHousing prices differ across major Texas cities."
+  }
+]
