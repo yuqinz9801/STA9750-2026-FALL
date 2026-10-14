@@ -514,6 +514,6 @@ The third strategy is to maintain focus on live events versus pre-recorded conte
 ::: {.callout-note collapse="true"}
 ## AI Usage Statement
 
-[ChatGPT was used to help understand the project requirements, write and find the reason for the coding errors as well as some Qurto rendering issues. It was also used to interpret data analysis results so that I can better brainstorm my memo's format. ]
+ChatGPT was used to help understand the project requirements, write and find the reason for the coding errors as well as some Qurto rendering issues. It was also used to interpret data analysis results so that I can better brainstorm my memo's format. 
 
 :::
