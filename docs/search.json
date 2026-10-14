@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Welcome to My Website",
     "section": "",
-    "text": "Hello! My name is Yuqin Zheng, and I am a student at Baruch College. This website hosts my course projects and assignments for STA 9750.\n\n\n\n\n\n\n\nLast Updated: Monday 09 21, 2026 at 20:09PM"
+    "text": "Hello! My name is Yuqin Zheng, and I am a student at Baruch College. This website hosts my course projects and assignments for STA 9750.\n\n\n\n\n\n\n\nLast Updated: Monday 09 21, 2026 at 21:50PM"
   },
   {
     "objectID": "Lab2.html#annual-housing-sales",
@@ -37,9 +37,9 @@
   {
     "objectID": "mp01.html",
     "href": "mp01.html",
-    "title": "STA 9750 Submission Material",
+    "title": "Data Acquisition",
     "section": "",
-    "text": "title: “Mini-Project Placeholder”\n\n\n\nThis is a placeholder for STA9750 Mini-Project 1. Check back soon for more!"
+    "text": "title: “STA 9750 -Project #01: What We Watched: Exploring Netflix Viewing Data”\n\n\nauthor: Yuqin Zheng"
   },
   {
     "objectID": "mp02.html",
@@ -61,5 +61,236 @@
     "title": "STA 9750 Submission Material",
     "section": "",
     "text": "title: “Mini-Project Placeholder”\n\n\n\nThis is a placeholder for STA9750 Mini-Project 4. Check back soon for more!"
+  },
+  {
+    "objectID": "Lab 04.html",
+    "href": "Lab 04.html",
+    "title": "Lab 04",
+    "section": "",
+    "text": "if (!require(\"tidyverse\")) install.packages(\"tidyverse\")\nif (!require(\"nycflights13\")) install.packages(\"nycflights13\")\n\nlibrary(tidyverse)\nlibrary(nycflights13)"
+  },
+  {
+    "objectID": "Lab 04.html#setup-and-package-loading",
+    "href": "Lab 04.html#setup-and-package-loading",
+    "title": "Lab 04",
+    "section": "",
+    "text": "if (!require(\"tidyverse\")) install.packages(\"tidyverse\")\nif (!require(\"nycflights13\")) install.packages(\"nycflights13\")\n\nlibrary(tidyverse)\nlibrary(nycflights13)"
+  },
+  {
+    "objectID": "Lab 04.html#part-1-filter-statements",
+    "href": "Lab 04.html#part-1-filter-statements",
+    "title": "Lab 04",
+    "section": "Part 1: Filter Statements",
+    "text": "Part 1: Filter Statements\n\n1. Flights with an arrival delay of two or more hours (&gt;= 120 minutes)\n\nflights |&gt; \n  filter(arr_delay &gt;= 120)\n\n# A tibble: 10,200 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      811            630       101     1047            830\n 2  2013     1     1      848           1835       853     1001           1950\n 3  2013     1     1      957            733       144     1056            853\n 4  2013     1     1     1114            900       134     1447           1222\n 5  2013     1     1     1505           1310       115     1638           1431\n 6  2013     1     1     1525           1340       105     1831           1626\n 7  2013     1     1     1549           1445        64     1912           1656\n 8  2013     1     1     1558           1359       119     1718           1515\n 9  2013     1     1     1732           1630        62     2028           1825\n10  2013     1     1     1803           1620       103     2008           1750\n# ℹ 10,190 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n2. Flights that flew to Houston (IAH or HOU)\n\nflights |&gt; \n  filter(dest %in% c(\"IAH\", \"HOU\"))\n\n# A tibble: 9,313 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      623            627        -4      933            932\n 4  2013     1     1      728            732        -4     1041           1038\n 5  2013     1     1      739            739         0     1104           1038\n 6  2013     1     1      908            908         0     1228           1219\n 7  2013     1     1     1028           1026         2     1350           1339\n 8  2013     1     1     1044           1045        -1     1352           1351\n 9  2013     1     1     1114            900       134     1447           1222\n10  2013     1     1     1205           1200         5     1503           1505\n# ℹ 9,303 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n3. Flights operated by United (UA), American (AA), or Delta (DL)\n\nflights |&gt; \n  filter(carrier %in% c(\"UA\", \"AA\", \"DL\"))\n\n# A tibble: 139,504 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      554            600        -6      812            837\n 5  2013     1     1      554            558        -4      740            728\n 6  2013     1     1      558            600        -2      753            745\n 7  2013     1     1      558            600        -2      924            917\n 8  2013     1     1      558            600        -2      923            937\n 9  2013     1     1      559            600        -1      941            910\n10  2013     1     1      559            600        -1      854            902\n# ℹ 139,494 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n4. Flights that departed in summer (June, July, or August)\n\nflights |&gt; \n  filter(month %in% c(6, 7, 8))\n\n# A tibble: 86,995 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     6     1        2           2359         3      341            350\n 2  2013     6     1      451            500        -9      624            640\n 3  2013     6     1      506            515        -9      715            800\n 4  2013     6     1      534            545       -11      800            829\n 5  2013     6     1      538            545        -7      925            922\n 6  2013     6     1      539            540        -1      832            840\n 7  2013     6     1      546            600       -14      850            910\n 8  2013     6     1      551            600        -9      828            850\n 9  2013     6     1      552            600        -8      647            655\n10  2013     6     1      553            600        -7      700            711\n# ℹ 86,985 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n5. Flights that arrived more than two hours late, but didn’t leave late\n\nflights |&gt; \n  filter(arr_delay &gt; 120, dep_delay &lt;= 0)\n\n# A tibble: 29 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1    27     1419           1420        -1     1754           1550\n 2  2013    10     7     1350           1350         0     1736           1526\n 3  2013    10     7     1357           1359        -2     1858           1654\n 4  2013    10    16      657            700        -3     1258           1056\n 5  2013    11     1      658            700        -2     1329           1015\n 6  2013     3    18     1844           1847        -3       39           2219\n 7  2013     4    17     1635           1640        -5     2049           1845\n 8  2013     4    18      558            600        -2     1149            850\n 9  2013     4    18      655            700        -5     1213            950\n10  2013     5    22     1827           1830        -3     2217           2010\n# ℹ 19 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n6. Flights delayed more than an hour, but made up more than 30 minutes in flight\n\nflights |&gt; \n  filter(dep_delay &gt; 60, (dep_delay - arr_delay) &gt; 30)\n\n# A tibble: 1,819 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1     2205           1720       285       46           2040\n 2  2013     1     1     2326           2130       116      131             18\n 3  2013     1     3     1503           1221       162     1803           1555\n 4  2013     1     3     1839           1700        99     2056           1950\n 5  2013     1     3     1850           1745        65     2148           2120\n 6  2013     1     3     1941           1759       102     2246           2139\n 7  2013     1     3     1950           1845        65     2228           2227\n 8  2013     1     3     2257           2000       177       45           2224\n 9  2013     1     4     1917           1700       137     2135           1950\n10  2013     1     4     2010           1745       145     2257           2120\n# ℹ 1,809 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n7. Flights that departed between midnight and 6:00 AM (inclusive)\n\nflights |&gt; \n  filter(dep_time &lt;= 600 | dep_time == 2400)\n\n# A tibble: 9,373 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 9,363 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+  },
+  {
+    "objectID": "Lab 04.html#part-2-grouped-operations",
+    "href": "Lab 04.html#part-2-grouped-operations",
+    "title": "Lab 04",
+    "section": "Part 2: Grouped Operations",
+    "text": "Part 2: Grouped Operations\n\n1. Which carrier has the lowest rate of delayed flights?\n\nflights |&gt; \n  filter(!is.na(arr_delay)) |&gt; \n  group_by(carrier) |&gt; \n  summarize(delay_rate = mean(arr_delay &gt; 0)) |&gt; \n  arrange(delay_rate)\n\n# A tibble: 16 × 2\n   carrier delay_rate\n   &lt;chr&gt;        &lt;dbl&gt;\n 1 AS           0.267\n 2 HA           0.284\n 3 AA           0.335\n 4 VX           0.341\n 5 DL           0.344\n 6 OO           0.345\n 7 US           0.371\n 8 9E           0.384\n 9 UA           0.385\n10 B6           0.437\n11 WN           0.440\n12 MQ           0.467\n13 YV           0.474\n14 EV           0.479\n15 F9           0.576\n16 FL           0.597\n\n\n\n\n2. Which carrier has the highest chance of early arrivals?\n\nflights |&gt; \n  filter(!is.na(arr_delay)) |&gt; \n  group_by(carrier) |&gt; \n  summarize(early_rate = mean(arr_delay &lt; 0)) |&gt; \n  arrange(desc(early_rate))\n\n# A tibble: 16 × 2\n   carrier early_rate\n   &lt;chr&gt;        &lt;dbl&gt;\n 1 AS           0.722\n 2 HA           0.705\n 3 OO           0.655\n 4 AA           0.650\n 5 VX           0.640\n 6 DL           0.639\n 7 US           0.611\n 8 9E           0.603\n 9 UA           0.600\n10 B6           0.546\n11 WN           0.541\n12 YV           0.515\n13 MQ           0.513\n14 EV           0.505\n15 F9           0.398\n16 FL           0.381\n\n\n\n\n3. Which carrier is most likely to “make up time in flight” after a delayed departure?\n\nflights |&gt; \n  filter(!is.na(dep_delay), !is.na(arr_delay), dep_delay &gt; 0) |&gt; \n  group_by(carrier) |&gt; \n  summarize(made_up_time_rate = mean(arr_delay &lt; dep_delay)) |&gt; \n  arrange(desc(made_up_time_rate))\n\n# A tibble: 16 × 2\n   carrier made_up_time_rate\n   &lt;chr&gt;               &lt;dbl&gt;\n 1 AS                  0.782\n 2 9E                  0.718\n 3 WN                  0.718\n 4 HA                  0.710\n 5 UA                  0.708\n 6 VX                  0.707\n 7 DL                  0.683\n 8 AA                  0.682\n 9 EV                  0.630\n10 YV                  0.625\n11 B6                  0.617\n12 F9                  0.6  \n13 US                  0.560\n14 MQ                  0.534\n15 FL                  0.502\n16 OO                  0.333\n\n\n\n\n4. Which origin airport has the highest rate of delays?\n\nflights |&gt; \n  filter(!is.na(dep_delay)) |&gt; \n  group_by(origin) |&gt; \n  summarize(delay_rate = mean(dep_delay &gt; 0)) |&gt; \n  arrange(desc(delay_rate))\n\n# A tibble: 3 × 2\n  origin delay_rate\n  &lt;chr&gt;       &lt;dbl&gt;\n1 EWR         0.448\n2 JFK         0.384\n3 LGA         0.332\n\n\n\n\n5. Which month has the most flights?\n\nflights |&gt; \n  count(month) |&gt; \n  arrange(desc(n))\n\n# A tibble: 12 × 2\n   month     n\n   &lt;int&gt; &lt;int&gt;\n 1     7 29425\n 2     8 29327\n 3    10 28889\n 4     3 28834\n 5     5 28796\n 6     4 28330\n 7     6 28243\n 8    12 28135\n 9     9 27574\n10    11 27268\n11     1 27004\n12     2 24951\n\n\n\n\n6. What is the furthest flight in this data?\n\nflights |&gt; \n  filter(distance == max(distance, na.rm = TRUE)) |&gt; \n  distinct(origin, dest, distance)\n\n# A tibble: 1 × 3\n  origin dest  distance\n  &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;\n1 JFK    HNL       4983\n\n\n\n\n7. What is the shortest flight in this data?\n\nflights |&gt; \n  filter(distance == min(distance, na.rm = TRUE)) |&gt; \n  distinct(origin, dest, distance)\n\n# A tibble: 1 × 3\n  origin dest  distance\n  &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt;\n1 EWR    LGA         17\n\n\n\n\n8. Are longer flights more likely to be delayed than short ones?\n\nflights |&gt; \n  filter(!is.na(arr_delay)) |&gt; \n  mutate(distance_group = ntile(distance, 4)) |&gt; \n  group_by(distance_group) |&gt; \n  summarize(\n    mean_delay = mean(arr_delay),\n    delay_rate = mean(arr_delay &gt; 0)\n  )\n\n# A tibble: 4 × 3\n  distance_group mean_delay delay_rate\n           &lt;int&gt;      &lt;dbl&gt;      &lt;dbl&gt;\n1              1       8.82      0.400\n2              2      10.3       0.439\n3              3       5.78      0.400\n4              4       2.71      0.386"
+  },
+  {
+    "objectID": "Lab 2 Part 3.html",
+    "href": "Lab 2 Part 3.html",
+    "title": "Lab 2 Part 3",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "Lab 2 Part 3.html#quarto",
+    "href": "Lab 2 Part 3.html#quarto",
+    "title": "Lab 2 Part 3",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "Lab 2 Part 3.html#running-code",
+    "href": "Lab 2 Part 3.html#running-code",
+    "title": "Lab 2 Part 3",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+  },
+  {
+    "objectID": "mp01.html#count-the-number-of-distinct-shows-and-movies-shows-with-different-numbers-of-seasons-are-counted-separately.",
+    "href": "mp01.html#count-the-number-of-distinct-shows-and-movies-shows-with-different-numbers-of-seasons-are-counted-separately.",
+    "title": "Data Acquisition",
+    "section": "Count the number of distinct shows and movies; shows with different numbers of seasons are counted separately.",
+    "text": "Count the number of distinct shows and movies; shows with different numbers of seasons are counted separately.\n\ntotal_titles_stats &lt;- NETFLIX_DATA |&gt;\n  summarize(total_titles = n_distinct(title))\ntotal_titles_stats\n\n# A tibble: 1 × 1\n  total_titles\n         &lt;int&gt;\n1        24427"
+  },
+  {
+    "objectID": "mp01.html#count-total-hours-that-audience-spent-on-bridgerton-universe",
+    "href": "mp01.html#count-total-hours-that-audience-spent-on-bridgerton-universe",
+    "title": "Data Acquisition",
+    "section": "Count total hours that audience spent on “Bridgerton universe”",
+    "text": "Count total hours that audience spent on “Bridgerton universe”\n\nNETFLIX_DATA |&gt;\n  filter(str_detect(title, \"Bridgerton\")) |&gt;\n  summarize(total_hours = sum(hours_viewed))\n\n# A tibble: 1 × 1\n  total_hours\n        &lt;dbl&gt;\n1  4862800000"
+  },
+  {
+    "objectID": "mp01.html#count-total-hours-that-audience-spent-on-stranger-things-exclude-the-beyond-stranger-things-tales-from-and-fireplace",
+    "href": "mp01.html#count-total-hours-that-audience-spent-on-stranger-things-exclude-the-beyond-stranger-things-tales-from-and-fireplace",
+    "title": "Data Acquisition",
+    "section": "Count total hours that audience spent on “Stranger Things”, exclude the “Beyond Stranger Things”, “Tales from”, and “Fireplace”",
+    "text": "Count total hours that audience spent on “Stranger Things”, exclude the “Beyond Stranger Things”, “Tales from”, and “Fireplace”\n\nNETFLIX_DATA |&gt;\n  filter(str_detect(title, \"Stranger Things\")) |&gt;\n  filter_out(str_detect(title, \"Beyond Stranger Things\")) |&gt;\n  filter_out(str_detect(title, \"Tales from '85\")) |&gt;\n  filter_out(str_detect(title, \"Stranger Things: Fireplace\")) |&gt;\n  summarize(total_hours = sum(hours_viewed))\n\n# A tibble: 1 × 1\n  total_hours\n        &lt;dbl&gt;\n1  5588900000"
+  },
+  {
+    "objectID": "mp01.html#calculate-the-proportion-of-total-viewing-hours-in-2026h1-contributed-by-the-top-10-titles",
+    "href": "mp01.html#calculate-the-proportion-of-total-viewing-hours-in-2026h1-contributed-by-the-top-10-titles",
+    "title": "Data Acquisition",
+    "section": "Calculate the proportion of total viewing hours in 2026H1 contributed by the top 10 titles",
+    "text": "Calculate the proportion of total viewing hours in 2026H1 contributed by the top 10 titles\n\nNETFLIX_DATA |&gt;\n  filter(period == \"2026H1\") |&gt;\n  mutate(period_total = sum(hours_viewed)) |&gt;\n  arrange(desc(hours_viewed)) |&gt;\n  slice_head(n = 10) |&gt;\n  summarize(top_10_share = sum(hours_viewed) /first(period_total))\n\n# A tibble: 1 × 1\n  top_10_share\n         &lt;dbl&gt;\n1       0.0670"
+  },
+  {
+    "objectID": "mp01.html#calculate-the-proportion-of-netflixs-catlog-that-is-globally-available.",
+    "href": "mp01.html#calculate-the-proportion-of-netflixs-catlog-that-is-globally-available.",
+    "title": "Data Acquisition",
+    "section": "Calculate the proportion of Netflix’s catlog that is globally available.",
+    "text": "Calculate the proportion of Netflix’s catlog that is globally available.\n\nglobal_fraction_stats &lt;- NETFLIX_DATA |&gt;\n  summarize(\n    title_fraction = n_distinct(title[available_globally %in% TRUE]) /\n      n_distinct(title),\n    hours_fraction = sum(hours_viewed[available_globally %in% TRUE]) /\n      sum(hours_viewed)\n  )\nglobal_fraction_stats |&gt;\n  mutate(\n    title_fraction = scales::percent(title_fraction, accuracy = 0.1),\n    hours_fraction = scales::percent(hours_fraction, accuracy = 0.1)\n  )\n\n# A tibble: 1 × 2\n  title_fraction hours_fraction\n  &lt;chr&gt;          &lt;chr&gt;         \n1 24.6%          51.9%         \n\n\nThis dataset covers statistical results from 2023 to the first half of 2026, featuring a total of 24,427 movies and shows. Both “Bridgerton universe” and “Beyond Stranger Things” generated nearly 5 billion hours of view time, making them considered as “popular Netflix series”. In the first half of 2026, the top 10 most-watched titles accounted for 6.70% of total view time. Only 24.6% of Netflix’s content library is available worldwide, representing just 5.19% of total runtime. ## top title(by total hours viewed) in each period & fraction of total viewership\n\ntop_titles &lt;- NETFLIX_DATA |&gt;\n  group_by(period) |&gt;\n  mutate(period_total = sum(hours_viewed)) |&gt;\n  slice_max(order_by = hours_viewed, n = 1, with_ties = FALSE) |&gt;\n  mutate(viewership_share = hours_viewed / period_total) |&gt;\n  ungroup() |&gt;\n  select(period, title, hours_viewed, viewership_share) \n  \n  top_titles |&gt;\n  gt() |&gt;\n  fmt_percent(columns = viewership_share) |&gt;\n  fmt_number(columns = hours_viewed, decimals = 0, use_seps = TRUE)\n\n\n\n\n\n\n\nperiod\ntitle\nhours_viewed\nviewership_share\n\n\n\n\n2023H1\nThe Night Agent: Season 1\n812,100,000\n0.87%\n\n\n2023H2\nKing the Land: Limited Series\n630,200,000\n0.97%\n\n\n2024H1\nBridgerton: Season 3\n733,800,000\n1.08%\n\n\n2024H2\nSquid Game: Season 2\n619,900,000\n0.91%\n\n\n2025H1\nSquid Game: Season 2\n840,300,000\n1.18%\n\n\n2025H2\nWednesday: Season 2\n964,100,000\n1.35%\n\n\n2026H1\nBridgerton: Season 4\n889,800,000\n1.20%"
+  },
+  {
+    "objectID": "mp01.html#how-netflixs-catalog-has-changed-in-size-over-the-available-periods",
+    "href": "mp01.html#how-netflixs-catalog-has-changed-in-size-over-the-available-periods",
+    "title": "Data Acquisition",
+    "section": "How Netflix’s catalog has changed in size over the available periods",
+    "text": "How Netflix’s catalog has changed in size over the available periods\n\nNETFLIX_DATA |&gt;\n  group_by(period) |&gt;\n  summarize(\n    number_titles = n_distinct(title),\n    total_runtime_minutes = sum(runtime, na.rm = TRUE),\n    .groups = \"drop\"\n  ) |&gt;\n  gt() |&gt;\n  fmt_number(columns = total_runtime_minutes, decimals = 0)\n\n\n\n\n\n\n\nperiod\nnumber_titles\ntotal_runtime_minutes\n\n\n\n\n2023H1\n18126\n2,623,021\n\n\n2023H2\n6574\n3,007,003\n\n\n2024H1\n6775\n3,106,470\n\n\n2024H2\n6854\n3,216,885\n\n\n2025H1\n7473\n3,502,435\n\n\n2025H2\n7712\n3,582,841\n\n\n2026H1\n8163\n3,771,293"
+  },
+  {
+    "objectID": "mp01.html#which-titles-have-had-the-most-consistently-high-viewership-across-all-periods",
+    "href": "mp01.html#which-titles-have-had-the-most-consistently-high-viewership-across-all-periods",
+    "title": "Data Acquisition",
+    "section": "Which titles have had the most consistently high viewership across all periods?",
+    "text": "Which titles have had the most consistently high viewership across all periods?\n\nNETFLIX_DATA |&gt;\n  group_by(title) |&gt;\n  summarize(\n    periods_present = n_distinct(period),\n    average_hours_viewed = mean(hours_viewed, na.rm = TRUE),\n    min_hours_viewed = min(hours_viewed, na.rm = TRUE),\n    sd_hours_viewed = sd(hours_viewed, na.rm = TRUE),\n    .groups = \"drop\"\n    ) |&gt;\n  filter(periods_present == n_distinct(NETFLIX_DATA$period)) |&gt;\n  arrange(desc(min_hours_viewed)) |&gt;\n  slice_head(n = 10) |&gt;\n  gt() |&gt;\n  fmt_number(\n    columns = c(average_hours_viewed, min_hours_viewed, sd_hours_viewed),\n    decimals = 0\n  )\n\n\n\n\n\n\n\ntitle\nperiods_present\naverage_hours_viewed\nmin_hours_viewed\nsd_hours_viewed\n\n\n\n\nPablo Escobar, el patron del mal: Season 1\n7\n136,214,286\n105,500,000\n22,860,842\n\n\nChiquititas (2013)\n7\n120,014,286\n105,000,000\n19,421,588\n\n\nStranger Things 4\n7\n207,385,714\n97,100,000\n171,675,823\n\n\nSuits (2011): Season 1\n7\n126,885,714\n80,900,000\n59,209,724\n\n\nBreaking Bad: Season 2\n7\n91,614,286\n78,500,000\n11,977,399\n\n\nSuits (2011): Season 2\n7\n120,314,286\n76,100,000\n61,523,828\n\n\nSam & Cat: Season 1\n7\n91,242,857\n75,700,000\n13,755,588\n\n\nBreaking Bad: Season 5\n7\n84,114,286\n74,900,000\n10,690,249\n\n\nMoney Heist: Part 1\n7\n80,571,429\n73,100,000\n9,627,515\n\n\nBreaking Bad: Season 3\n7\n81,971,429\n70,900,000\n10,717,076"
+  },
+  {
+    "objectID": "mp01.html#across-each-period-audiences-spent-varying-proportions-of-their-time-watching-episodic-shows-compared-to-feature-films.",
+    "href": "mp01.html#across-each-period-audiences-spent-varying-proportions-of-their-time-watching-episodic-shows-compared-to-feature-films.",
+    "title": "Data Acquisition",
+    "section": "Across each period, audiences spent varying proportions of their time watching episodic shows compared to feature films.",
+    "text": "Across each period, audiences spent varying proportions of their time watching episodic shows compared to feature films.\n\ntv_movie_stats &lt;- NETFLIX_DATA |&gt;\n  mutate(\n    content_type = if_else(\n      runtime &gt; 240 | str_detect(title, \"Season\"),\n      \"Show\",\n      \"Movie\"\n    )\n  ) |&gt;\n  group_by(period, content_type) |&gt;\n  summarize(\n    hours_viewed = sum(hours_viewed, na.rm = TRUE),\n    .groups = \"drop_last\"\n  ) |&gt;\n  mutate(time_fraction = hours_viewed / sum(hours_viewed)) |&gt;\n  ungroup() |&gt;\n  select(period, content_type, time_fraction) |&gt;\n  pivot_wider(\n    names_from = content_type,\n    values_from = time_fraction\n  )\n\ntv_movie_stats |&gt;\n  gt() |&gt;\n  fmt_percent(columns = c(Movie, Show))\n\n\n\n\n\n\n\nperiod\nMovie\nShow\nNA\n\n\n\n\n2023H1\n2.88%\n69.17%\n0.279519011\n\n\n2023H2\n3.55%\n95.78%\n0.006639356\n\n\n2024H1\n3.21%\n95.70%\n0.010891752\n\n\n2024H2\n2.78%\n96.46%\n0.007632748\n\n\n2025H1\n4.17%\n95.10%\n0.007292844\n\n\n2025H2\n3.30%\n94.76%\n0.019412103\n\n\n2026H1\n3.23%\n94.75%\n0.020212932"
+  },
+  {
+    "objectID": "mp01.html#how-does-the-performance-of-live-events-compare-to-pre-taped-content-does-the-average-live-event-draw-more-viewership-than-an-average-piece-of-pre-taped-content-how-about-a-top-tier-live-event-vs-top-tier-pre-taped-content",
+    "href": "mp01.html#how-does-the-performance-of-live-events-compare-to-pre-taped-content-does-the-average-live-event-draw-more-viewership-than-an-average-piece-of-pre-taped-content-how-about-a-top-tier-live-event-vs-top-tier-pre-taped-content",
+    "title": "Data Acquisition",
+    "section": "How does the performance of live events compare to pre-taped content? Does the average live event draw more viewership than an average piece of pre-taped content? How about a ‘top tier’ live event vs ‘top tier’ pre-taped content?",
+    "text": "How does the performance of live events compare to pre-taped content? Does the average live event draw more viewership than an average piece of pre-taped content? How about a ‘top tier’ live event vs ‘top tier’ pre-taped content?\n\n\nCode\nlive_stats &lt;- NETFLIX_DATA |&gt;\n  filter(!is.na(live_event)) |&gt;\n  group_by(live_event) |&gt;\n  summarize(\n    average_hours_viewed = mean(hours_viewed, na.rm = TRUE),\n    p90_hours_viewed = quantile(hours_viewed, 0.9, na.rm = TRUE),\n    .groups = \"drop\"\n  ) |&gt;\n  mutate(\n    content_type = if_else(live_event, \"Live Events\", \"Pre-recorded\")\n  ) |&gt;\n  select(content_type, average_hours_viewed, p90_hours_viewed)\n\nlive_stats |&gt;\n  gt() |&gt;\n  tab_header(\n    title = \"Live Events vs. Pre-recorded Content\"\n  ) |&gt;\n  cols_label(\n    content_type = \"Content Type\",\n    average_hours_viewed = \"Average Viewing Hours\",\n    p90_hours_viewed = \"90th Percentile Viewing Hours\"\n  ) |&gt;\n  fmt_number(\n    columns = c(average_hours_viewed, p90_hours_viewed),\n    decimals = 0,\n    use_seps = TRUE\n  )\n\n\n\n\n\n\n\n\nLive Events vs. Pre-recorded Content\n\n\nContent Type\nAverage Viewing Hours\n90th Percentile Viewing Hours\n\n\n\n\nPre-recorded\n8,289,547\n20,000,000\n\n\nLive Events\n3,560,000\n6,500,000\n\n\n\n\n\n\n\nIn this table, pre-recorded has an average viewing hours of 8,289,547, which is significantly higher than the 3,560,000 for live events. Furthermore, even at the threshold corresponding to the top roughly 10% of viewing hours (P90), the 20,000,000 for pre-recorded is also much higher than the 6,500,000 for live events."
+  },
+  {
+    "objectID": "Lab 2.html",
+    "href": "Lab 2.html",
+    "title": "Houston Housing Market",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "Lab 2.html#quarto",
+    "href": "Lab 2.html#quarto",
+    "title": "Houston Housing Market",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "Lab 2.html#bullets",
+    "href": "Lab 2.html#bullets",
+    "title": "Houston Housing Market",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
+  },
+  {
+    "objectID": "Lab 2.html#code",
+    "href": "Lab 2.html#code",
+    "title": "Houston Housing Market",
+    "section": "Code",
+    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Lab 3.html#exercise-1",
+    "href": "Lab 3.html#exercise-1",
+    "title": "Lab 3",
+    "section": "Exercise 1",
+    "text": "Exercise 1\n\nfunc_1 &lt;- function (x){\n  cat(\"The largest value in that vector of\",\n      length(x),\n      \"number is\",\n      max(x),\n      \".\")\n}\nfunc_1(c(1,2,3,5,7))\n\nThe largest value in that vector of 5 number is 7 .\n\nfunc_1(c(1,2,5,5))\n\nThe largest value in that vector of 4 number is 5 ."
+  },
+  {
+    "objectID": "Lab 3.html#exercise-2",
+    "href": "Lab 3.html#exercise-2",
+    "title": "Lab 3",
+    "section": "Exercise 2",
+    "text": "Exercise 2\n\nleap_year &lt;- function(year) {\n  if(year %% 400 == 0){\n    TRUE\n  } else if(year %% 100 == 0){\n    FALSE\n  } else if(year %% 4 == 0){\n    TRUE\n  } else{\n    FALSE\n  }\n}\nleap_year(2025)\n\n[1] FALSE\n\nleap_year(2024)\n\n[1] TRUE\n\nleap_year(2100)\n\n[1] FALSE\n\nleap_year(2000)\n\n[1] TRUE"
+  },
+  {
+    "objectID": "mp01.html#what-date-range-is-covered-by-this-data-set",
+    "href": "mp01.html#what-date-range-is-covered-by-this-data-set",
+    "title": "Data Acquisition",
+    "section": "What date range is covered by this data set?",
+    "text": "What date range is covered by this data set?\n\n\nCode\ndate_range_stats &lt;- NETFLIX_DATA |&gt;\n  summarize(\n    first_date = min(period_start),\n    last_date = max(period_end)\n  )\n\n\nThe date range for this data set is start from January 01, 2023 to June 30, 2026."
+  },
+  {
+    "objectID": "mp01.html#how-many-different-shows-and-movies-are-covered-in-this-data-set",
+    "href": "mp01.html#how-many-different-shows-and-movies-are-covered-in-this-data-set",
+    "title": "Data Acquisition",
+    "section": "How many different shows and movies are covered in this data set?",
+    "text": "How many different shows and movies are covered in this data set?\n\n\nCode\ntotal_titles_stats &lt;- NETFLIX_DATA |&gt;\n  summarize(total_titles = n_distinct(title))\ntotal_titles_stats\n\n\nThere are 24,427 different shows and movies covered in this data set."
+  },
+  {
+    "objectID": "mp01.html#how-many-total-hours-have-been-spent-watching-shows-from-the-bridgerton-universe",
+    "href": "mp01.html#how-many-total-hours-have-been-spent-watching-shows-from-the-bridgerton-universe",
+    "title": "Data Acquisition",
+    "section": "How many total hours have been spent watching shows from the Bridgerton universe?",
+    "text": "How many total hours have been spent watching shows from the Bridgerton universe?\n\n\nCode\nbridgerton_stats &lt;- NETFLIX_DATA |&gt;\n  filter(str_detect(title, \"Bridgerton\")) |&gt;\n  summarize(total_hours = sum(hours_viewed, na.rm = TRUE))\n\n\nAudience have spent 4,862,800,000 hours watching shows from the Bridgerton universe."
+  },
+  {
+    "objectID": "mp01.html#how-many-total-hours-have-been-spent-watching-the-five-seasons-of-stranger-things",
+    "href": "mp01.html#how-many-total-hours-have-been-spent-watching-the-five-seasons-of-stranger-things",
+    "title": "Data Acquisition",
+    "section": "How many total hours have been spent watching the five seasons of Stranger Things?",
+    "text": "How many total hours have been spent watching the five seasons of Stranger Things?\n\n\nCode\nstranger_things_stats &lt;- NETFLIX_DATA |&gt;\n  filter(str_detect(title, \"Stranger Things\")) |&gt;\n  filter_out(str_detect(title, \"Beyond Stranger Things\")) |&gt;\n  filter_out(str_detect(title, \"Tales from '85\")) |&gt;\n  filter_out(str_detect(title, \"Stranger Things: Fireplace\")) |&gt;\n  summarize(total_hours = sum(hours_viewed, na.rm = TRUE))\n\n\nAudience have spent 5,588,900,000 hours watching the five seasons of Stranger Things."
+  },
+  {
+    "objectID": "mp01.html#what-percentage-of-total-watch-time-was-spent-on-the-top-10-titles-of-2026h1",
+    "href": "mp01.html#what-percentage-of-total-watch-time-was-spent-on-the-top-10-titles-of-2026h1",
+    "title": "Data Acquisition",
+    "section": "What percentage of total watch time was spent on the Top 10 titles of 2026H1?",
+    "text": "What percentage of total watch time was spent on the Top 10 titles of 2026H1?\n\n\nCode\ntop10_stats &lt;- NETFLIX_DATA |&gt;\n  filter(period == \"2026H1\") |&gt;\n  mutate(period_total = sum(hours_viewed, na.rm = TRUE)) |&gt;\n  arrange(desc(hours_viewed)) |&gt;\n  slice_head(n = 10) |&gt;\n  summarize(\n    top_10_share = sum(hours_viewed, na.rm = TRUE) /\n      first(period_total)\n  )\n\n\n6.7% of total watch time was spent on the Top 10 titles of 2026H1."
+  },
+  {
+    "objectID": "mp01.html#what-fraction-of-netflixs-catalog-is-globally-available-answer-this-both-by-title-and-weighted-by-hours-viewed",
+    "href": "mp01.html#what-fraction-of-netflixs-catalog-is-globally-available-answer-this-both-by-title-and-weighted-by-hours-viewed",
+    "title": "Data Acquisition",
+    "section": "What fraction of Netflix’s catalog is globally available? (Answer this both by title and weighted by hours viewed)",
+    "text": "What fraction of Netflix’s catalog is globally available? (Answer this both by title and weighted by hours viewed)\n\n\nCode\nglobal_fraction_stats &lt;- NETFLIX_DATA |&gt;\n  summarize(\n    title_fraction = n_distinct(title[available_globally %in% TRUE]) /\n      n_distinct(title),\n    hours_fraction = sum(hours_viewed[available_globally %in% TRUE], na.rm = TRUE) /\n      sum(hours_viewed, na.rm = TRUE)\n  )\n\n\nBy title, 24.6% of Netflix’s catalog is globally available, while weighted by hours viewed, that fraction is 51.9%."
+  },
+  {
+    "objectID": "mp01.html#top-titleby-total-hours-viewed-in-each-period-fraction-of-total-viewership",
+    "href": "mp01.html#top-titleby-total-hours-viewed-in-each-period-fraction-of-total-viewership",
+    "title": "Data Acquisition",
+    "section": "Top title(by total hours viewed) in each period & fraction of total viewership",
+    "text": "Top title(by total hours viewed) in each period & fraction of total viewership\n\ntop_titles &lt;- NETFLIX_DATA |&gt;\n  group_by(period) |&gt;\n  mutate(period_total = sum(hours_viewed)) |&gt;\n  slice_max(order_by = hours_viewed, n = 1, with_ties = FALSE) |&gt;\n  mutate(viewership_share = hours_viewed / period_total) |&gt;\n  ungroup() |&gt;\n  select(period, title, hours_viewed, viewership_share) \n  \n  top_titles |&gt;\n  gt() |&gt;\n  fmt_percent(columns = viewership_share) |&gt;\n  fmt_number(columns = hours_viewed, decimals = 0, use_seps = TRUE)\n\n\n\n\n\n\n\nperiod\ntitle\nhours_viewed\nviewership_share\n\n\n\n\n2023H1\nThe Night Agent: Season 1\n812,100,000\n0.87%\n\n\n2023H2\nKing the Land: Limited Series\n630,200,000\n0.97%\n\n\n2024H1\nBridgerton: Season 3\n733,800,000\n1.08%\n\n\n2024H2\nSquid Game: Season 2\n619,900,000\n0.91%\n\n\n2025H1\nSquid Game: Season 2\n840,300,000\n1.18%\n\n\n2025H2\nWednesday: Season 2\n964,100,000\n1.35%\n\n\n2026H1\nBridgerton: Season 4\n889,800,000\n1.20%"
+  },
+  {
+    "objectID": "mp01.html#what-was-the-top-title-by-total-hours-viewed-in-each-period-and-what-fraction-of-total-viewership-did-it-capture",
+    "href": "mp01.html#what-was-the-top-title-by-total-hours-viewed-in-each-period-and-what-fraction-of-total-viewership-did-it-capture",
+    "title": "Data Acquisition",
+    "section": "What was the top title (by total hours viewed) in each period and what fraction of total viewership did it capture?",
+    "text": "What was the top title (by total hours viewed) in each period and what fraction of total viewership did it capture?\n\n\nCode\ntop_titles &lt;- NETFLIX_DATA |&gt;\n  group_by(period) |&gt;\n  mutate(period_total = sum(hours_viewed, na.rm = TRUE)) |&gt;\n  slice_max(order_by = hours_viewed, n = 1, with_ties = FALSE) |&gt;\n  mutate(viewership_share = hours_viewed / period_total) |&gt;\n  ungroup() |&gt;\n  select(period, title, hours_viewed, viewership_share) \n  \n  top_titles |&gt;\n    gt() |&gt;\n    tab_header(\n      title = \"Top Title by Viewing Hours in Each Period\"\n    ) |&gt;\n    cols_label(\n      period = \"Period\",\n      title = \"Title\",\n      hours_viewed = \"Hours Viewed\",\n      viewership_share = \"Share of Viewing Hours\"\n    ) |&gt;\n    fmt_percent(\n      columns = viewership_share,\n      decimals = 2\n      ) |&gt;\n  fmt_number(\n    columns = hours_viewed, \n    decimals = 0, \n    use_seps = TRUE\n    )\n\n\n\n\n\n\n\n\nTop Title by Viewing Hours in Each Period\n\n\nPeriod\nTitle\nHours Viewed\nShare of Viewing Hours\n\n\n\n\n2023H1\nThe Night Agent: Season 1\n812,100,000\n0.87%\n\n\n2023H2\nKing the Land: Limited Series\n630,200,000\n0.97%\n\n\n2024H1\nBridgerton: Season 3\n733,800,000\n1.08%\n\n\n2024H2\nSquid Game: Season 2\n619,900,000\n0.91%\n\n\n2025H1\nSquid Game: Season 2\n840,300,000\n1.18%\n\n\n2025H2\nWednesday: Season 2\n964,100,000\n1.35%\n\n\n2026H1\nBridgerton: Season 4\n889,800,000\n1.20%"
+  },
+  {
+    "objectID": "mp01.html#how-has-netflixs-catalog-changed-in-size-over-the-periods-for-which-we-have-questions-you-should-consider-both-the-number-of-titles-and-the-total-runtime-of-content.",
+    "href": "mp01.html#how-has-netflixs-catalog-changed-in-size-over-the-periods-for-which-we-have-questions-you-should-consider-both-the-number-of-titles-and-the-total-runtime-of-content.",
+    "title": "Data Acquisition",
+    "section": "How has Netflix’s catalog changed in size over the periods for which we have questions? (You should consider both the number of titles and the total runtime of content.)",
+    "text": "How has Netflix’s catalog changed in size over the periods for which we have questions? (You should consider both the number of titles and the total runtime of content.)\n\n\nCode\ncatalog_stats &lt;- NETFLIX_DATA |&gt;\n  group_by(period) |&gt;\n  summarize(\n    number_titles = n_distinct(title),\n    total_runtime_minutes = sum(runtime, na.rm = TRUE),\n    .groups = \"drop\"\n  ) \ncatalog_stats |&gt;\n  gt() |&gt;\n  tab_header(\n    title = \"Netflix Catalog Size Over Time\"\n  ) |&gt;\n  fmt_number(\n    columns = c(number_titles, total_runtime_minutes),\n    decimals = 0,\n    use_seps = TRUE\n  )\n\n\n\n\n\n\n\n\nNetflix Catalog Size Over Time\n\n\nperiod\nnumber_titles\ntotal_runtime_minutes\n\n\n\n\n2023H1\n18,126\n2,623,021\n\n\n2023H2\n6,574\n3,007,003\n\n\n2024H1\n6,775\n3,106,470\n\n\n2024H2\n6,854\n3,216,885\n\n\n2025H1\n7,473\n3,502,435\n\n\n2025H2\n7,712\n3,582,841\n\n\n2026H1\n8,163\n3,771,293\n\n\n\n\n\n\n\nThis table shows that from 2023H1 to 2023H2, although the number_titles dropped from 18,126 to 6,574, the total_runtime_minutes increased from 2,623,021 to 3,007,003. Furthermore, the 2026H1 data shows that the number_titles increased to 8,163, and the total_runtime_minutes went straight up to 3,771,293. This indicates that Netflix should know what titles the audience really likes, may remove some old and unpopular titles, and add new and appealing titles after the adjustment to boost the total_runtime_minutes."
+  },
+  {
+    "objectID": "mp01.html#which-titles-have-had-the-most-consistently-high-viewership-across-all-periods-these-shows-are-likely-to-be-staples-that-viewers-fall-back-on-as-comfort-food-e.g.-re-runs-of-friends.",
+    "href": "mp01.html#which-titles-have-had-the-most-consistently-high-viewership-across-all-periods-these-shows-are-likely-to-be-staples-that-viewers-fall-back-on-as-comfort-food-e.g.-re-runs-of-friends.",
+    "title": "Data Acquisition",
+    "section": "Which titles have had the most consistently high viewership across all periods? (These shows are likely to be ‘staples’ that viewers fall back on as ‘comfort food’, e.g., re-runs of Friends.)",
+    "text": "Which titles have had the most consistently high viewership across all periods? (These shows are likely to be ‘staples’ that viewers fall back on as ‘comfort food’, e.g., re-runs of Friends.)\n\n\nCode\nconsistent_titles &lt;- NETFLIX_DATA |&gt;\n  group_by(title) |&gt;\n  summarize(\n    periods_present = n_distinct(period),\n    average_hours_viewed = mean(hours_viewed, na.rm = TRUE),\n    min_hours_viewed = min(hours_viewed, na.rm = TRUE),\n    sd_hours_viewed = sd(hours_viewed, na.rm = TRUE),\n    .groups = \"drop\"\n  ) |&gt;\n  filter(periods_present == n_distinct(NETFLIX_DATA$period)) |&gt;\n  arrange(desc(min_hours_viewed)) |&gt;\n  slice_head(n = 10)\n\nconsistent_titles |&gt;\n  gt() |&gt;\n  tab_header(\n    title = \"Top 10 Titles with Consistently High Viewership\"\n  ) |&gt;\n  cols_label(\n    title = \"Title\",\n    periods_present = \"Periods\",\n    average_hours_viewed = \"Average Hours Viewed\",\n    min_hours_viewed = \"Minimum Hours Viewed\",\n    sd_hours_viewed = \"Standard Deviation\"\n  ) |&gt;\n  fmt_number(\n    columns = c(\n      average_hours_viewed,\n      min_hours_viewed,\n      sd_hours_viewed\n    ),\n    decimals = 0,\n    use_seps = TRUE\n  )\n\n\n\n\n\n\n\n\nTop 10 Titles with Consistently High Viewership\n\n\nTitle\nPeriods\nAverage Hours Viewed\nMinimum Hours Viewed\nStandard Deviation\n\n\n\n\nPablo Escobar, el patron del mal: Season 1\n7\n136,214,286\n105,500,000\n22,860,842\n\n\nChiquititas (2013)\n7\n120,014,286\n105,000,000\n19,421,588\n\n\nStranger Things 4\n7\n207,385,714\n97,100,000\n171,675,823\n\n\nSuits (2011): Season 1\n7\n126,885,714\n80,900,000\n59,209,724\n\n\nBreaking Bad: Season 2\n7\n91,614,286\n78,500,000\n11,977,399\n\n\nSuits (2011): Season 2\n7\n120,314,286\n76,100,000\n61,523,828\n\n\nSam & Cat: Season 1\n7\n91,242,857\n75,700,000\n13,755,588\n\n\nBreaking Bad: Season 5\n7\n84,114,286\n74,900,000\n10,690,249\n\n\nMoney Heist: Part 1\n7\n80,571,429\n73,100,000\n9,627,515\n\n\nBreaking Bad: Season 3\n7\n81,971,429\n70,900,000\n10,717,076\n\n\n\n\n\n\n\nIn this table, Average Hours Viewed represents the average viewing hours across the seven periods. Minimum Hours Viewed indicates the across the seven periods the lowest viewing hours. Standard Deviation reflects whether the viewership pf a title is stable by observing the fluctuations in watch hours across the seven periods.To better explain the question, we can see the two titles Money Heist: Part 1 and Pablo Escobar: Season 1 as an example. We could say Money Heist: Part 1 is the most consistent title because of the standard deviation 9.63M is the lowest one in the table. But the most consistently high title is Pablo Escobar: Season 1 because its has high average hours viewed of 136.21M as well as relatively low standard deviation of 22.86M."
+  },
+  {
+    "objectID": "mp01.html#within-each-period-what-fraction-of-time-was-spent-on-shows-vs-movies",
+    "href": "mp01.html#within-each-period-what-fraction-of-time-was-spent-on-shows-vs-movies",
+    "title": "Data Acquisition",
+    "section": "Within each period, what fraction of time was spent on ‘shows’ vs movies?",
+    "text": "Within each period, what fraction of time was spent on ‘shows’ vs movies?\n\n\nCode\ntv_movie_stats &lt;- NETFLIX_DATA |&gt;\n  mutate(\n    content_type = if_else(\n      runtime &gt; 240 | str_detect(title, \"Season\"),\n      \"Show\",\n      \"Movie\"\n    ),\n    content_type = replace_na(content_type, \"Unclassified\")\n  ) |&gt;\n  group_by(period, content_type) |&gt;\n  summarize(\n    hours_viewed = sum(hours_viewed, na.rm = TRUE),\n    .groups = \"drop_last\"\n  ) |&gt;\n  mutate(time_fraction = hours_viewed / sum(hours_viewed)) |&gt;\n  ungroup() |&gt;\n  select(period, content_type, time_fraction) |&gt;\n  pivot_wider(\n    names_from = content_type,\n    values_from = time_fraction\n  )\n\ntv_movie_stats |&gt;\n  gt() |&gt;\n  tab_header(\n    title = \"TV Shows vs. Movies: Viewing Hours by Period\"\n  ) |&gt;\n  cols_label(\n    period = \"Period\",\n    Movie = \"Movies\",\n    Show = \"TV Shows\",\n    Unclassified = \"Unclassified\"\n  ) |&gt;\n  fmt_percent(\n    columns = c(Movie, Show, Unclassified),\n    decimals = 2\n  )\n\n\n\n\n\n\n\n\nTV Shows vs. Movies: Viewing Hours by Period\n\n\nPeriod\nMovies\nTV Shows\nUnclassified\n\n\n\n\n2023H1\n2.88%\n69.17%\n27.95%\n\n\n2023H2\n3.55%\n95.78%\n0.66%\n\n\n2024H1\n3.21%\n95.70%\n1.09%\n\n\n2024H2\n2.78%\n96.46%\n0.76%\n\n\n2025H1\n4.17%\n95.10%\n0.73%\n\n\n2025H2\n3.30%\n94.76%\n1.94%\n\n\n2026H1\n3.23%\n94.75%\n2.02%\n\n\n\n\n\n\n\nFrom 2023 to 2026H1, the data for Netflix viewing hours by period shows that the percentage of TV shows is much higher than that of Movies. Besides the Unclassified column, where the percentage in 2023H1 is as high as 27.95% and needs attention, we can roughly suggest that the company should put more focus on TV Shows."
   }
 ]
