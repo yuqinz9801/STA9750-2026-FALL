@@ -807,78 +807,128 @@ top_5_upt |>
 **Findings**: MTA NYC Heavy Rail ranks first with the highest annual UPT of approximately 2.32 billion, followed by MTA NYC Bus in second place. The top five transit services consist of three bus systems and two heavy rail systems, with MTA services showing significantly higher ridership than the others. However, high passenger volume does not necessarily mean greater environmental friendliness, as overall impact must be evaluated by combining energy consumption and carbon emissions.
 
 ### Average Trip Length on MTA NYC
+
 ```{r}
 #| echo: true
 #| code-fold: true
-#| code-summary: "Show the Calculation"
+#| code-summary: "Show MTA NYC Calculation Code"
 
-# Select MTA New York City Transit
-mta_service <- NTD_SERVICE |>
-  filter(str_detect(AGENCY, "^MTA New York City Transit"))
+# 1. Select MTA NYC service records
+mta_nyc <- NTD_SERVICE |>
+  dplyr::filter(AGENCY == "MTA New York City Transit")
 
-# Check data quality
-mta_service |>
-  summarize(
-    records = n(),
-    missing_passenger_miles = sum(is.na(sum_passenger_miles)),
+# Check that the agency exists
+if (nrow(mta_nyc) == 0) {
+  stop("No MTA New York City Transit records found.")
+}
+
+# 2. Data quality checks
+mta_nyc_check <- mta_nyc |>
+  dplyr::summarise(
+    records = dplyr::n(),
+    missing_passenger_miles = sum(
+      is.na(sum_passenger_miles)
+    ),
     upt_without_miles = sum(
-      total_upt[is.na(sum_passenger_miles)],
+      total_upt > 0 & is.na(sum_passenger_miles),
       na.rm = TRUE
     ),
-    flagged_records = sum(flagged_likely_inaccurate)
+    flagged_records = sum(
+      flagged_likely_inaccurate,
+      na.rm = TRUE
+    )
   )
 
+# 3. Calculate average trip length
+mta_avg_trip <- mta_nyc |>
+  dplyr::summarise(
+    avg_trip_length =
+      sum(sum_passenger_miles, na.rm = TRUE) /
+      sum(total_upt, na.rm = TRUE)
+  )
 
-# Calculate average trip length
+# 4. Create a summary table
+mta_quality_table <- tibble::tibble(
+  Check = c(
+    "Service records",
+    "Missing passenger-mile values",
+    "UPT without passenger miles",
+    "Flagged records"
+  ),
+  Value = c(
+    mta_nyc_check$records[1],
+    mta_nyc_check$missing_passenger_miles[1],
+    mta_nyc_check$upt_without_miles[1],
+    mta_nyc_check$flagged_records[1]
+  )
+)
 
-mta_avg_trip_length <- mta_service |>
-  filter(
-    !is.na(sum_passenger_miles),
-    !is.na(total_upt),
-    total_upt > 0
+# 5. Display the GT table
+mta_quality_table |>
+  gt::gt() |>
+  gt::tab_header(
+    title = "MTA NYC Data Quality Summary",
+    subtitle = "2025 NTD Service by Agency"
   ) |>
-  summarize(
-    avg_miles = sum(sum_passenger_miles) / sum(total_upt)
+  gt::cols_label(
+    Check = "Data Quality Check",
+    Value = "Value"
   ) |>
-  pull(avg_miles)
-
-mta_avg_trip_length
-
+  gt::cols_align(
+    align = "center",
+    columns = Value
+  ) |>
+  gt::tab_options(
+    heading.background.color = "#EAF5EE",
+    column_labels.background.color = "#EAF5EE",
+    table.border.top.color = "#174D3A",
+    table.border.bottom.color = "#174D3A",
+    table.font.size = gt::px(14)
+  )
 ```
-**Answer**: The average trip lenth in NYC is `r round(mta_avg_trip_length, 2)` miles, calculated by total passenger miles divided by total unlinked passenger trips.
 
-### Are All US States Represented in the NTD Service Data? if No, show the missing states in NTD Service Data.
+::: {.callout-note appearance="simple"}
+### Key Finding
+
+The estimated average trip length for **MTA New York City Transit** is  
+**`r sprintf("%.2f", mta_avg_trip$avg_trip_length[1])` miles per trip**.
+
+This estimate is calculated as total passenger miles divided by total unlinked passenger trips.
+:::
+
+The result suggests that the average reported trip on MTA New York City Transit was about `r sprintf("%.2f", mta_avg_trip$avg_trip_length[1])` miles. The supporting data include `r mta_nyc_check$records[1]` service records, with `r mta_nyc_check$flagged_records[1]` flagged record and no cases where UPT was reported without passenger-mile information.
+
+
+### Are All US States Represented in the NTD Service Data? 
 ```{r}
-
 #| echo: true
 #| code-fold: true
-#| code-summary: "Show the Code"
+#| code-summary: "Show State Coverage Check Code"
 
-# Create a reference list of all 50 US states
-us_states <- tibble(
+# Create a reference list of all 50 U.S. states
+us_states <- tibble::tibble(
   state_name = state.name,
   state_code = state.abb
 )
 
-# Find unique states in NTD_SERVICE
+# Find unique states in NTD Service
 ntd_states <- NTD_SERVICE |>
-  distinct(state)
+  dplyr::distinct(state)
 
-# Find states missing from NTD_SERVICE
+# Identify any missing states
 missing_states <- us_states |>
-  anti_join(
+  dplyr::anti_join(
     ntd_states,
     by = c("state_code" = "state")
   )
 
-# Display missing states
-missing_states
-
-# Count missing states
-nrow(missing_states)
-
+# Calculate the number of represented states
+states_represented <- nrow(us_states) - nrow(missing_states)
 ```
-**Answer**: There are `r nrow(missing_states)` missing states in the NTD Service Data. So all 50 US states are represented.
+
+**Answer:** `r states_represented` out of 50 U.S. states are represented in the NTD Service data. There are `r nrow(missing_states)` missing states.
+
+`r if (nrow(missing_states) > 0) paste0("Missing states: ", paste(missing_states$state_name, collapse = ", "), ".") else ""`
 
 # Data Analysis
 
