@@ -1,0 +1,170 @@
+
+/* Green Transit Awards - MP02 Theme */
+
+/* Page background and text */
+body {
+  background-color: #FFFFFF;
+  color: #263B30;
+}
+
+/* Main headings */
+h1, h2, h3, h4 {
+  color: #174D3A;
+  font-weight: 650;
+}
+
+/* Report title */
+.quarto-title-block .title {
+  color: #174D3A;
+  font-weight: 700;
+}
+
+/* Navigation bar */
+#quarto-header .navbar {
+  background-color: #174D3A !important;
+}
+
+#quarto-header .navbar-brand,
+#quarto-header .nav-link {
+  color: #FFFFFF !important;
+}
+
+/* Links */
+a {
+  color: #438764;
+}
+
+a:hover {
+  color: #174D3A;
+}
+
+/* Table of contents */
+#TOC a {
+  color: #438764;
+}
+
+#TOC .active {
+  color: #174D3A;
+  font-weight: 600;
+}
+
+/* Callout notes */
+.callout-note {
+  background-color: #EAF5EE;
+  border-left: 4px solid #438764;
+}
+
+/* Folded code sections */
+details.code-fold {
+  border: 1px solid #D5E8DB;
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+/* Images */
+img {
+  border-radius: 8px;
+}
+
+/* West Virginia margin image */
+.column-margin img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
+/* Award Winner Summary */
+
+.award-summary {
+  background: #F5F9F6;
+  border-left: 4px solid #2F7253;
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin: 24px 0;
+}
+
+.award-summary h4 {
+  color: #174D3A;
+  font-size: 1.7rem;
+  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.award-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0 16px;
+}
+
+.award-metric {
+  border-top: 1px solid #C9DED0;
+  padding-top: 12px;
+}
+
+.award-metric p {
+  margin-bottom: 5px;
+  color: #53675C;
+  font-size: 0.9rem;
+}
+
+.award-metric strong {
+  font-size: 1.45rem;
+  color: #174D3A;
+}
+
+@media (max-width: 650px) {
+  .award-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Seattle Award Photo Gallery */
+
+.seattle-photos .column img {
+  width: 100% !important;
+  height: 230px !important;
+  object-fit: cover !important;
+  border-radius: 10px;
+  display: block;
+}
+
+.seattle-photos figure {
+  margin: 0;
+}
+
+.seattle-photos figcaption {
+  font-size: 0.85rem;
+  color: #64756B;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Award Photo Gallery */
+
+.award-photos .column img {
+  width: 100% !important;
+  height: 230px !important;
+  object-fit: cover !important;
+  border-radius: 10px;
+  display: block;
+}
+
+.award-photos figure {
+  margin: 0;
+}
+
+.award-photos figcaption {
+  font-size: 0.85rem;
+  color: #64756B;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.award-photos {
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
