@@ -1,0 +1,34 @@
+
+/* Chinese American Atlas Theme */
+
+body {
+  background-color: #FFFFFF;
+  color: #263445;
+}
+
+h1 {
+  color: #204A73;
+}
+
+h2 {
+  color: #204A73;
+  border-bottom: 2px solid #B52B3A;
+  padding-bottom: 8px;
+}
+
+h3 {
+  color: #B52B3A;
+}
+
+a {
+  color: #B52B3A;
+}
+
+.quarto-title-block .title {
+  color: #204A73;
+}
+
+blockquote {
+  border-left: 4px solid #B52B3A;
+  padding-left: 15px;
+}
