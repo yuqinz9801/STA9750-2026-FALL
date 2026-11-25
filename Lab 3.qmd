@@ -1,0 +1,42 @@
+---
+title: "Lab 3"
+format: html
+author: "Yuqin Zheng"
+---
+
+## Lab 3
+
+## Exercise 1
+
+```{r}
+func_1 <- function (x){
+  cat("The largest value in that vector of",
+      length(x),
+      "number is",
+      max(x),
+      ".")
+}
+func_1(c(1,2,3,5,7))
+
+func_1(c(1,2,5,5))
+```
+
+## Exercise 2
+
+```{r}
+leap_year <- function(year) {
+  if(year %% 400 == 0){
+    TRUE
+  } else if(year %% 100 == 0){
+    FALSE
+  } else if(year %% 4 == 0){
+    TRUE
+  } else{
+    FALSE
+  }
+}
+leap_year(2025)
+leap_year(2024)
+leap_year(2100)
+leap_year(2000)
+```
